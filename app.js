@@ -3,6 +3,9 @@ const http =require('http');
 
 const express=require('express');
 const app=express();
+
+app.set('view engine','pug');
+app.set('views','views');
 const adminData=require('./routes/admin')
 
 const rootdir=require('./util/path')
@@ -20,7 +23,7 @@ app.use(shoproutes);
 
 
 app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(rootdir,'views','404.html'))
+    res.status(404).render('404',{docTitle:'error page'})
 })
 
 
