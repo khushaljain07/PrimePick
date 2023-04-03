@@ -4,7 +4,7 @@ const http =require('http');
 const express=require('express');
 const app=express();
 
-app.set('view engine','pug');
+app.set('view engine','ejs');
 app.set('views','views');
 const adminData=require('./routes/admin')
 
@@ -23,7 +23,7 @@ app.use(shoproutes);
 
 
 app.use((req,res,next)=>{
-    res.status(404).render('404',{docTitle:'error page'})
+    res.status(404).render('404',{docTitle:'error page',path:'/'})
 })
 
 
