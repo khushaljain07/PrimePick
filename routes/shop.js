@@ -1,13 +1,11 @@
-const path=require('path')
+
 const express=require('express');
 const router=express.Router();
-const rootdir=require('../util/path')
-const adminData=require('./admin')
-router.get('/',(req,res,next)=>{
-
- const product=adminData.products;
-    res.render('shop',{prods:product,docTitle:'shop',path:'/'});
-
-
-})
+const shopController=require('../controller/shop')
+//getting shop page 
+router.get('/',shopController.getIndex);
+router.get('/products',shopController.getProducts)
+router.get('/cart',shopController.getCart);
+router.get('/orders',shopController.getOrders);
+router.get('/checkout',shopController.getCheckout)
 module.exports=router;
