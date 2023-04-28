@@ -8,11 +8,15 @@ const router = express.Router();
 const adminController = require("../controller/admin");
 
 //getting add product page here
-router.get("/add-product", adminController.getNewProducts);
+router.get("/add-product", adminController.getAddProducts);
 
+router.post("/add-product", adminController.postAddProducts);
 //admin/products
 router.get('/products',adminController.getProducts);
-//posting new product in file
-router.post("/add-product", adminController.addNewProducts);
+// //posting new product in file
+router.get("/edit-product/:productId",adminController.getEditProducts)
 
-exports.routes = router;
+ router.post('/edit-product/:productId',adminController.postEditProducts) 
+router.post('/delete-product/:productId',adminController.postDeleteProduct)
+ 
+module.exports = router; 
